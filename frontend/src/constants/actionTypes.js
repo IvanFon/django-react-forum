@@ -1,1 +1,2 @@
 export const BOARDS_LOADED = 'BOARDS_LOADED';
+export const POSTS_LOADED = 'POSTS_LOADED';

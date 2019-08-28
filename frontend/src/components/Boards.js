@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getBoards } from '../actions';
@@ -23,7 +24,9 @@ class Boards extends React.Component {
         <ul>
           {this.props.boards.map(board => (
             <li key={board.id}>
-              {board.name}
+              <Link to={`/board/${board.id}`}>
+                {board.name}
+              </Link>
             </li>
           ))}
         </ul>

@@ -8,3 +8,15 @@ class Board(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Post(models.Model):
+    """A post made to a board."""
+
+    title = models.CharField(max_length=50)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    board = models.ForeignKey(Board, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title

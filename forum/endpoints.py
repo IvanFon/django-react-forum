@@ -1,12 +1,9 @@
-from django.urls import include, path
-from rest_framework import routers
+from django.urls import path
 
-from .api import BoardViewSet
+from .api import BoardList, PostList
 
-
-router = routers.DefaultRouter()
-router.register('boards', BoardViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('boards/', BoardList.as_view()),
+    path('board/<int:board_id>', PostList.as_view()),
 ]
