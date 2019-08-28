@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getBoardPosts } from '../actions';
 
 const mapStateToProps = state => ({
-  posts: state.posts,
+  boardName: state.board.name,
+  posts: state.board.posts,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,7 +21,8 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        <h1>Board</h1>
+        <p><Link to='/'>Back to board list</Link></p>
+        <h1>{this.props.boardName}</h1>
         <ul>
           {this.props.posts.map(post => (
             <li key={post.id}>

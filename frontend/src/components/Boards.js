@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getBoards } from '../actions';
+import { getBoards, setBoardName } from '../actions';
 
 const mapStateToProps = state => ({
   boards: state.boards,
@@ -10,11 +10,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getBoards: () => dispatch(getBoards()),
+  setBoardName: name => dispatch(setBoardName(name)),
 });
 
 class Boards extends React.Component {
   componentDidMount() {
     this.props.getBoards();
+  }
+
+  boardSelected(name) {
+    this.props.setBoardName(name);
   }
 
   render() {
@@ -24,7 +29,8 @@ class Boards extends React.Component {
         <ul>
           {this.props.boards.map(board => (
             <li key={board.id}>
-              <Link to={`/board/${board.id}`}>
+              <Link to={`/board/${board.id}`}
+                    onClick={() => this.boardSelected(board.name)}>
                 {board.name}
               </Link>
             </li>

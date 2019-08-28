@@ -1,9 +1,10 @@
 import {
   BOARDS_LOADED,
   POSTS_LOADED,
+  SET_BOARD_NAME,
 } from '../constants/actionTypes';
 
-const boards = (state = [], action) => {
+export const boards = (state = [], action) => {
   switch (action.type) {
     case BOARDS_LOADED:
       return action.payload;
@@ -13,14 +14,26 @@ const boards = (state = [], action) => {
   }
 };
 
-const posts = (state = [], action) => {
+const initBoardState = {
+  name: '',
+  posts: [],
+};
+
+export const board = (state = initBoardState, action) => {
   switch (action.type) {
     case POSTS_LOADED:
-      return action.payload;
+      return {
+        ...state,
+        posts: action.payload,
+      };
+
+    case SET_BOARD_NAME:
+      return {
+        ...state,
+        name: action.payload,
+      };
 
     default:
       return state;
   }
 };
-
-export { boards, posts };
