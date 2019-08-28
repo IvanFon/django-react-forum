@@ -33,7 +33,7 @@ class Boards extends React.Component {
                   to={`/board/${board.id}`}
                   onClick={() => this.boardSelected(board.name)}>
               <h5 className="mb-1">{board.name}</h5>
-              <p className="mb-1">Board description</p>
+              <p className="mb-1">{board.description}</p>
             </Link>
           ))}
         </div>
