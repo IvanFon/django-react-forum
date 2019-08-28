@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'forum',
+    'users',
 
     'webpack_loader',
 
@@ -130,3 +131,6 @@ WEBPACK_LOADER = {
     'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
   },
 }
+
+# Custom user model
+AUTH_USER_MODEL = 'users.User'
