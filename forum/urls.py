@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .api import BoardView, BoardListView, CommentListView, PostView
+from .views import BoardView, BoardListView, CommentListView, PostView
 
 
 urlpatterns = [
