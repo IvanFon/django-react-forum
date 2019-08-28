@@ -8,5 +8,5 @@ urlpatterns = [
     path('boards/<int:id>', BoardView.as_view()),
     path('post/', PostView.as_view()),
     path('post/<int:id>', PostView.as_view()),
-    path('post/<int:id>/comments', CommentListView.as_view()),
+    path('post/<int:id>/comments/', CommentListView.as_view()),
 ]

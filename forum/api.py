@@ -37,9 +37,22 @@ class PostView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CommentListView(generics.ListAPIView):
+class CommentListView(APIView):
     serializer_class = CommentSerializer
 
-    def get_queryset(self):
-        post_id = self.kwargs['id']
-        return Comment.objects.filter(post__id=post_id)
+    # Get comment list
+    def get(self, req, id):
+        comments = Comment.objects.filter(post__id=id)
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+    # Create a comment
+    def post(self, req, id):
+        data = req.data
+        data['post'] = id
+        serializer = CommentSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
