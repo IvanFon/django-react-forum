@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'forum',
+
     'webpack_loader',
 
     'django.contrib.admin',
