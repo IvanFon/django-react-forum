@@ -4,12 +4,12 @@ from .models import Board, Post
 from .serializers import BoardSerializer, PostListSerializer
 
 
-class BoardList(generics.ListAPIView):
+class BoardListView(generics.ListAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
 
 
-class PostList(generics.ListAPIView):
+class BoardView(generics.ListAPIView):
     serializer_class = PostListSerializer
 
     def get_queryset(self):

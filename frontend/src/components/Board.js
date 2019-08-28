@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getPosts } from '../actions';
+import { getBoardPosts } from '../actions';
 
 const mapStateToProps = state => ({
   posts: state.posts,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getPosts: id => dispatch(getPosts(id)),
+  getBoardPosts: id => dispatch(getBoardPosts(id)),
 });
 
-class PostList extends React.Component {
+class Board extends React.Component {
   componentDidMount() {
-    this.props.getPosts(this.props.match.params.id);
+    this.props.getBoardPosts(this.props.match.params.id);
   }
 
   render() {
@@ -32,4 +32,4 @@ class PostList extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

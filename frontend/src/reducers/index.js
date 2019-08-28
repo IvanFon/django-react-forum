@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
-import boards from './boards';
-import posts from './posts';
+import { boards, posts } from './boards';
 
 export default combineReducers({
   boards,
