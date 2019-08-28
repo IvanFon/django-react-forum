@@ -18,13 +18,28 @@ class Comments extends React.Component {
 
   render() {
     return (
-      <ul>
-        {this.props.comments.map(comment => (
-          <li key={comment.id}>
-            <p>{comment.text}</p>
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h3>Comments</h3>
+        <div className="list-group">
+          {this.props.comments.map(comment => (
+            <div className="list-group-item"
+                 key={comment.id}>
+              <h5 className="mb-1">Author</h5>
+              <p>{comment.text}</p>
+              <small>
+                {new Date(comment.date_added).toLocaleString(undefined, {
+                  hour12: false,
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  year: '2-digit',
+                  month: 'numeric',
+                  day: 'numeric',
+                })}
+              </small>
+            </div>
+          ))}
+        </div>
+      </div>
     );
   }
 }

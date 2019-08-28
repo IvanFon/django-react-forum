@@ -26,16 +26,17 @@ class Boards extends React.Component {
     return (
       <div>
         <h1>Boards</h1>
-        <ul>
+        <div className="list-group">
           {this.props.boards.map(board => (
-            <li key={board.id}>
-              <Link to={`/board/${board.id}`}
-                    onClick={() => this.boardSelected(board.name)}>
-                {board.name}
-              </Link>
-            </li>
+            <Link className="list-group-item list-group-item-action"
+                  key={board.id}
+                  to={`/board/${board.id}`}
+                  onClick={() => this.boardSelected(board.name)}>
+              <h5 className="mb-1">{board.name}</h5>
+              <p className="mb-1">Board description</p>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }

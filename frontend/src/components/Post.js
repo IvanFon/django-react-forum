@@ -30,17 +30,33 @@ class Post extends React.Component {
   }
 
   render() {
+    const date = new Date(this.props.postDate);
+    const datePosted = date.toLocaleDateString();
+    const timePosted = (date.getHours() + 1) + ':' +
+                       (date.getMinutes() + 1);
+
     return (
       <div>
         <button type="button"
                 className="link-button"
                 onClick={this.goBack}>
-          Back to board
+          {'<'} Back to board
         </button>
-        <h1>{this.props.postTitle}</h1>
-        <p>{this.props.postDate}</p>
-        <p>{this.props.postText}</p>
+
+        <h1 className="mt-4">{this.props.postTitle}</h1>
+        <p className="lead">by Author</p>
+
         <hr />
+
+        <p>Posted on {datePosted} at {timePosted}</p>
+
+        <hr />
+        <hr />
+
+        <p>{this.props.postText}</p>
+
+        <hr />
+
         <Comments postId={this.props.match.params.id} />
       </div>
     );

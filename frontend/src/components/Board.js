@@ -21,17 +21,23 @@ class Board extends React.Component {
   render() {
     return (
       <div>
-        <p><Link to='/'>Back to board list</Link></p>
+        <p><Link to='/'>{'<'} Back to boards</Link></p>
         <h1>{this.props.boardName}</h1>
-        <ul>
+        <div className="list-group">
           {this.props.posts.map(post => (
-            <li key={post.id}>
-              <Link to={`/post/${post.id}`}>
-                {post.title}
-              </Link>
-            </li>
+            <Link className="list-group-item list-group-item-action"
+                  key={post.id}
+                  to={`/post/${post.id}`}>
+              <div className="d-flex w-100 justify-content-between">
+                <h5 className="mb-1">{post.title}</h5>
+                <small>
+                  {new Date(post.date_added).toLocaleDateString()}
+                </small>
+              </div>
+              <p className="mb-1">Author: ...</p>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
