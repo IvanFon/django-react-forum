@@ -3,8 +3,12 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Board, Comment, Post
-from .serializers import (BoardSerializer, CommentSerializer, PostSerializer,
-                          PostListSerializer)
+from .serializers import (
+    BoardSerializer,
+    CommentSerializer,
+    PostSerializer,
+    PostListSerializer
+)
 
 
 class BoardListView(generics.ListAPIView):

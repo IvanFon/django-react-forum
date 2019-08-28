@@ -33,6 +33,6 @@ class RegisterView(APIView):
         if errors:
             return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
-        user = User.objects.create_user(username, password)
+        user = User.objects.create_user(username, None, password)
         user.save()
         return Response(None, status=status.HTTP_201_CREATED)
