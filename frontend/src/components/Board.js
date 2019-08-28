@@ -26,7 +26,9 @@ class Board extends React.Component {
         <ul>
           {this.props.posts.map(post => (
             <li key={post.id}>
-              {post.title}
+              <Link to={`/post/${post.id}`}>
+                {post.title}
+              </Link>
             </li>
           ))}
         </ul>
