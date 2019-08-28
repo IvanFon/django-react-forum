@@ -1,14 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 
-class Boards extends Component {
+import { getBoards } from '../actions';
+
+const mapStateToProps = state => ({
+  boards: state.boards,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getBoards: () => dispatch(getBoards()),
+});
+
+class Boards extends React.Component {
+  componentDidMount() {
+    this.props.getBoards();
+  }
+
   render() {
     return (
-      <ul>
-        <li>Foo</li>
-        <li>Bar</li>
-      </ul>
+      <div>
+        <h1>Boards</h1>
+        <ul>
+          {this.props.boards.map(board => (
+            <li key={board.id}>
+              {board.name}
+            </li>
+          ))}
+        </ul>
+      </div>
     );
   }
 }
 
-export default Boards;
+export default connect(mapStateToProps, mapDispatchToProps)(Boards);
