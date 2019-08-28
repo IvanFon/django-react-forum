@@ -1,4 +1,5 @@
 import {
+  COMMENTS_LOADED,
   POST_LOADED,
 } from '../constants/actionTypes'
 
@@ -12,3 +13,14 @@ export const getPost = id => dispatch => {
       });
     });
 };
+
+export const getComments = postId => dispatch => {
+  return fetch(`/api/post/${postId}/comments`)
+    .then(res => res.json())
+    .then(json => {
+      dispatch({
+        type: COMMENTS_LOADED,
+        payload: json,
+      });
+    });
+}

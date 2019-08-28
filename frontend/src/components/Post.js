@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Comments from './Comments';
 import { getPost } from '../actions';
 
 const mapStateToProps = state => ({
@@ -39,6 +40,8 @@ class Post extends React.Component {
         <h1>{this.props.postTitle}</h1>
         <p>{this.props.postDate}</p>
         <p>{this.props.postText}</p>
+        <hr />
+        <Comments postId={this.props.match.params.id} />
       </div>
     );
   }
