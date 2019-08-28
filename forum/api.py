@@ -1,4 +1,6 @@
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Board, Comment, Post
 from .serializers import (BoardSerializer, CommentSerializer, PostSerializer,
@@ -18,10 +20,21 @@ class BoardView(generics.ListAPIView):
         return Post.objects.filter(board__id=board_id)
 
 
-class PostView(generics.RetrieveAPIView):
-    serializer_class = PostSerializer
-    queryset = Post.objects.all()
-    lookup_field = 'id'
+class PostView(APIView):
+    # Get a post
+    def get(self, req, id):
+        post = Post.objects.get(id=id)
+        serializer = PostSerializer(post)
+        return Response(serializer.data)
+
+    # Create a post
+    def post(self, req):
+        serializer = PostSerializer(data=req.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CommentListView(generics.ListAPIView):
