@@ -1,5 +1,6 @@
 import {
   COMMENTS_LOADED,
+  NEW_COMMENT_SUCCESS,
   POSTS_LOADED,
   POST_LOADED,
 } from './constants/actionTypes';
@@ -21,6 +22,7 @@ export const dateFormatMiddleware = store => next => action => {
       });
       return next(action);
 
+    case NEW_COMMENT_SUCCESS:
     case POST_LOADED:
       action.payload.date = formatDate(action.payload.date_added);
       delete action.payload.date_added;
