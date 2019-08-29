@@ -30,9 +30,11 @@ class Navbar extends React.Component {
                   Boards
                 </NavLink>
             </li>
+          </ul>
 
-            {/* Only show login/register when not authenticated */}
-            {!this.props.loggedIn &&
+          {/* Non-authenticated user nav. */}
+          {!this.props.loggedIn &&
+            <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <NavLink className="nav-link"
                          activeClassName="active"
@@ -40,8 +42,6 @@ class Navbar extends React.Component {
                   Register
                 </NavLink>
               </li>
-            }
-            {!this.props.loggedIn &&
               <li className="nav-item">
                 <NavLink className="nav-link"
                          activeClassName="active"
@@ -49,10 +49,12 @@ class Navbar extends React.Component {
                   Login
                 </NavLink>
               </li>
-            }
+            </ul>
+          }
 
-            {/* Only show logout when authenticated */}
-            {this.props.loggedIn &&
+          {/* Authenticated user nav. */}
+          {this.props.loggedIn &&
+            <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <NavLink className="nav-link"
                          activeClassName="active"
@@ -60,8 +62,9 @@ class Navbar extends React.Component {
                   Logout
                 </NavLink>
               </li>
-            }
-          </ul>
+            </ul>
+          }
+
         </div>
       </nav>
     );
