@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'users',
 
     'webpack_loader',
+    'rest_framework_simplejwt.token_blacklist',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -148,5 +149,8 @@ REST_FRAMEWORK = {
 
 # Simple JWT settings
 SIMPLE_JWT = {
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.SlidingToken',),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
 }
