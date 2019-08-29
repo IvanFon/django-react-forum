@@ -65,7 +65,8 @@ class CommentForm extends React.Component {
           </div>
           <button className="btn btn-primary"
                   type="submit"
-                  onClick={this.handleSubmit}>
+                  onClick={this.handleSubmit}
+                  disabled={this.props.loading}>
             Submit
           </button>
         </form>

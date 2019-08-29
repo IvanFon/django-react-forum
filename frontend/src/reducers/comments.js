@@ -38,8 +38,7 @@ export const newComment = (state = initNewCommentState, action) => {
   switch (action.type) {
     case NEW_COMMENT_CLEAR:
       return {
-        ...initNewCommentState,
-        success: state.success,
+        ...initNewCommentState
       };
 
     case NEW_COMMENT_PENDING:
