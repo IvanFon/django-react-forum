@@ -11,6 +11,7 @@ export const comments = (state = [], action) => {
     case COMMENTS_LOADED:
       return action.payload;
 
+    // User added a new comment, add it to listing
     case NEW_COMMENT_SUCCESS:
       // author -> username
       const comment = Object.assign({}, action.payload);

@@ -19,7 +19,6 @@ export const post = (state = initPostState, action) => {
     case POST_LOADED:
       return {
         ...action.payload,
-        date: action.payload.date_added,
       };
 
     default:

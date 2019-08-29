@@ -31,11 +31,6 @@ class Post extends React.Component {
   }
 
   render() {
-    const date = new Date(this.props.postDate);
-    const datePosted = date.toLocaleDateString();
-    const timePosted = (date.getHours() + 1) + ':' +
-                       (date.getMinutes() + 1);
-
     return (
       <div>
         <button type="button"
@@ -46,7 +41,7 @@ class Post extends React.Component {
 
         <h1 className="mt-4">{this.props.postTitle}</h1>
         <p className="lead">by {this.props.postAuthor}</p>
-        <p>Posted on {datePosted} at {timePosted}</p>
+        <p>Posted on {this.props.postDate}</p>
 
         <hr />
 

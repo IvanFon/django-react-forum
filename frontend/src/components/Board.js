@@ -30,9 +30,7 @@ class Board extends React.Component {
                   to={`/post/${post.id}`}>
               <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{post.title}</h5>
-                <small>
-                  {new Date(post.date_added).toLocaleDateString()}
-                </small>
+                <small>{post.date}</small>
               </div>
               <p className="mb-1">Author: {post.author}</p>
             </Link>

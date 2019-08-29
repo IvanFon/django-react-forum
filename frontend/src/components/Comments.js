@@ -36,16 +36,7 @@ class Comments extends React.Component {
                  key={comment.id}>
               <h5 className="mb-1"><i>{comment.author}</i> says:</h5>
               <p>{comment.text}</p>
-              <small>
-                {new Date(comment.date_added).toLocaleString(undefined, {
-                  hour12: false,
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  year: '2-digit',
-                  month: 'numeric',
-                  day: 'numeric',
-                })}
-              </small>
+              <small>{comment.date}</small>
             </div>
           ))}
         </div>
