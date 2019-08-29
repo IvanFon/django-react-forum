@@ -54,7 +54,7 @@ class Navbar extends React.Component {
 
           {/* Authenticated user nav. */}
           {this.props.loggedIn &&
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <NavLink className="nav-link"
                          activeClassName="active"
