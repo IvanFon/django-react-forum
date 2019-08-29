@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
   BOARDS_LOADED,
   POSTS_LOADED,
@@ -5,12 +7,11 @@ import {
 } from '../constants/actionTypes';
 
 export const getBoards = () => dispatch => {
-  return fetch('/api/boards/')
-    .then(res => res.json())
-    .then(json => {
+  axios.get('/api/boards')
+    .then(res => {
       dispatch({
         type: BOARDS_LOADED,
-        payload: json,
+        payload: res.data,
       });
     });
 };
@@ -21,12 +22,11 @@ export const setBoardName = name => ({
 });
 
 export const getBoardPosts = id => dispatch => {
-  return fetch(`/api/boards/${id}`)
-    .then(res => res.json())
-    .then(json => {
+  axios.get(`/api/boards/${id}`)
+    .then(res => {
       dispatch({
         type: POSTS_LOADED,
-        payload: json,
+        payload: res.data,
       });
     });
 };
