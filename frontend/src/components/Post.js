@@ -46,12 +46,8 @@ class Post extends React.Component {
 
         <h1 className="mt-4">{this.props.postTitle}</h1>
         <p className="lead">by {this.props.postAuthor}</p>
-
-        <hr />
-
         <p>Posted on {datePosted} at {timePosted}</p>
 
-        <hr />
         <hr />
 
         <p>{this.props.postText}</p>
