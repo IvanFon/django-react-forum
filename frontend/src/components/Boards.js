@@ -30,7 +30,7 @@ class Boards extends React.Component {
           {this.props.boards.map(board => (
             <Link className="list-group-item list-group-item-action"
                   key={board.id}
-                  to={`/board/${board.id}`}
+                  to={`/boards/${board.id}`}
                   onClick={() => this.boardSelected(board.name)}>
               <h5 className="mb-1">{board.name}</h5>
               <p className="mb-1">{board.description}</p>

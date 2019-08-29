@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Board from './components/Board';
 import Boards from './components/Boards';
+import Login from './components/Login';
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
 import Post from './components/Post';
+import Register from './components/Register';
 
 class App extends Component {
   render() {
@@ -14,8 +16,11 @@ class App extends Component {
         <Navbar />
         <main role="main" className="container">
           <Switch>
-            <Route exact path='/' component={Boards} />
-            <Route path='/board/:id' component={Board} />
+            <Redirect exact path='/' to='/boards' />
+            <Route exact path='/boards' component={Boards} />
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <Route path='/boards/:id' component={Board} />
             <Route path='/post/:id' component={Post} />
             <Route component={NotFound} />
           </Switch>
