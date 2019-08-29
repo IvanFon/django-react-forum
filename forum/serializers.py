@@ -21,7 +21,7 @@ class PostSerializer(serializers.ModelSerializer):
 class PostCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'author', 'board', 'title', 'text', 'date_added')
+        fields = ('id', 'author', 'board', 'title', 'text', 'date_added', )
 
 
 class PostListSerializer(serializers.ModelSerializer):
@@ -37,6 +37,12 @@ class CommentSerializer(serializers.ModelSerializer):
     # Get author username
     author = serializers.CharField(source='author.username')
 
+    class Meta:
+        model = Comment
+        fields = ('id', 'author', 'post', 'text', 'date_added', )
+
+
+class CommentCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ('id', 'author', 'post', 'text', 'date_added', )

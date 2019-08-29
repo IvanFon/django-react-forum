@@ -21,6 +21,12 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
+// Include username with responses
+axios.interceptors.response.use(res => {
+  res.data.username = store.getState().user.username;
+  return res;
+});
+
 // Automatically refresh auth tokens
 function createResInterceptor() {
   const interceptor = axios.interceptors.response.use(res => res, err => {
@@ -103,8 +109,8 @@ export const loginUser = (username, password) => dispatch => {
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: {
-        username,
         ...res.data,
+        username,
       },
     });
   }).catch(err => {

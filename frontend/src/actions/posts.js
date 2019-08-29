@@ -1,29 +1,18 @@
 import axios from 'axios';
 
 import {
-  COMMENTS_LOADED,
   NEW_POST_CLEAR,
   NEW_POST_FAIL,
   NEW_POST_PENDING,
   NEW_POST_SUCCESS,
   POST_LOADED,
-} from '../constants/actionTypes'
+} from '../constants/actionTypes';
 
 export const getPost = id => dispatch => {
   axios.get(`/api/post/${id}`)
     .then(res => {
       dispatch({
         type: POST_LOADED,
-        payload: res.data,
-      });
-    });
-};
-
-export const getComments = postId => dispatch => {
-  axios.get(`/api/post/${postId}/comments`)
-    .then(res => {
-      dispatch({
-        type: COMMENTS_LOADED,
         payload: res.data,
       });
     });

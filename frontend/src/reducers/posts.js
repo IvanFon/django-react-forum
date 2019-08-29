@@ -1,5 +1,4 @@
 import {
-  COMMENTS_LOADED,
   NEW_POST_CLEAR,
   NEW_POST_FAIL,
   NEW_POST_PENDING,
@@ -22,16 +21,6 @@ export const post = (state = initPostState, action) => {
         ...action.payload,
         date: action.payload.date_added,
       };
-
-    default:
-      return state;
-  }
-};
-
-export const comments = (state = [], action) => {
-  switch (action.type) {
-    case COMMENTS_LOADED:
-      return action.payload;
 
     default:
       return state;

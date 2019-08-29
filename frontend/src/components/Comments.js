@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import CommentForm from './CommentForm';
 import { getComments } from '../actions';
 
 const mapStateToProps = state => ({
   comments: state.comments,
+  loggedIn: state.user.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,6 +22,14 @@ class Comments extends React.Component {
     return (
       <div>
         <h3>Comments</h3>
+
+        {this.props.loggedIn &&
+          <>
+            <CommentForm postId={this.props.postId} />
+            <hr />
+          </>
+        }
+
         <div className="list-group">
           {this.props.comments.map(comment => (
             <div className="list-group-item"

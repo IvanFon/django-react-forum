@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from .models import Board, Comment, Post
 from .serializers import (
     BoardSerializer,
+    CommentCreateSerializer,
     CommentSerializer,
     PostCreateSerializer,
     PostListSerializer,
@@ -45,8 +46,6 @@ class PostView(APIView):
 
 
 class CommentListView(APIView):
-    serializer_class = CommentSerializer
-
     # Get comment list
     def get(self, req, id):
         comments = Comment.objects.filter(post__id=id)
@@ -57,7 +56,8 @@ class CommentListView(APIView):
     def post(self, req, id):
         data = req.data
         data['post'] = id
-        serializer = CommentSerializer(data=data)
+        data['author'] = req.user.id
+        serializer = CommentCreateSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
