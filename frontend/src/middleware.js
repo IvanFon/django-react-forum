@@ -7,9 +7,9 @@ import {
 
 const formatDate = date_added => {
   const date = new Date(date_added);
-  return date.toLocaleDateString() +
-              ' at ' + (date.getHours() + 1) +
-              ':' + (date.getMinutes() + 1);
+  return date.toLocaleDateString() + ' at ' +
+    date.getHours() + ':' +
+    (('0' + date.getMinutes()).slice(-2));
 };
 
 export const dateFormatMiddleware = store => next => action => {
