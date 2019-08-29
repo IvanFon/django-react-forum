@@ -3,6 +3,7 @@ import {
   USER_LOGIN_PENDING,
   USER_LOGIN_SUCCESS,
   USER_LOGOUT,
+  USER_REFRESH_TOKEN,
   USER_REGISTER_FAIL,
   USER_REGISTER_PENDING,
   USER_REGISTER_SUCCESS,
@@ -79,7 +80,8 @@ export const login = (state = initLoginState, action) => {
 const initUserState = {
   loggedIn: false,
   username: '',
-  token: '',
+  refresh: '',
+  access: '',
 };
 
 export const user = (state = initUserState, action) => {
@@ -92,6 +94,12 @@ export const user = (state = initUserState, action) => {
 
     case USER_LOGOUT:
       return initUserState;
+
+    case USER_REFRESH_TOKEN:
+      return {
+        ...state,
+        ...action.payload,
+      };
 
     default:
       return state;
