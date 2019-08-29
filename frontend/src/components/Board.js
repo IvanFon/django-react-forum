@@ -34,7 +34,7 @@ class Board extends React.Component {
                   {new Date(post.date_added).toLocaleDateString()}
                 </small>
               </div>
-              <p className="mb-1">Author: ...</p>
+              <p className="mb-1">Author: {post.author}</p>
             </Link>
           ))}
         </div>

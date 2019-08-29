@@ -5,6 +5,7 @@ import {
 
 const initPostState = {
   id: -1,
+  author: '',
   title: '',
   text: '',
   date: '',
@@ -14,9 +15,7 @@ export const post = (state = initPostState, action) => {
   switch (action.type) {
     case POST_LOADED:
       return {
-        id: action.payload.id,
-        title: action.payload.title,
-        text: action.payload.text,
+        ...action.payload,
         date: action.payload.date_added,
       };
 

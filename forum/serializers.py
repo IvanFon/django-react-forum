@@ -10,15 +10,21 @@ class BoardSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    # Get author username
+    author = serializers.CharField(source='author.username')
+
     class Meta:
         model = Post
-        fields = ('id', 'board', 'title', 'text', 'date_added', )
+        fields = ('id', 'author', 'board', 'title', 'text', 'date_added', )
 
 
 class PostListSerializer(serializers.ModelSerializer):
+    # Get author username
+    author = serializers.CharField(source='author.username')
+
     class Meta:
         model = Post
-        fields = ('id', 'title', 'date_added', )
+        fields = ('id', 'author', 'title', 'date_added', )
 
 
 class CommentSerializer(serializers.ModelSerializer):

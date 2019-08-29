@@ -5,6 +5,7 @@ import Comments from './Comments';
 import { getPost } from '../actions';
 
 const mapStateToProps = state => ({
+  postAuthor: state.post.author,
   postTitle: state.post.title,
   postText: state.post.text,
   postDate: state.post.date,
@@ -44,7 +45,7 @@ class Post extends React.Component {
         </button>
 
         <h1 className="mt-4">{this.props.postTitle}</h1>
-        <p className="lead">by Author</p>
+        <p className="lead">by {this.props.postAuthor}</p>
 
         <hr />
 
