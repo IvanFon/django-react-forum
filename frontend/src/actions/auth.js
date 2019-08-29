@@ -8,6 +8,16 @@ import {
   USER_REGISTER_PENDING,
   USER_REGISTER_SUCCESS,
 } from '../constants/actionTypes';
+import store from '../store';
+
+// Add authentication headers to requests when logged in
+axios.interceptors.request.use(config => {
+  const user = store.getState().user;
+  if (user.loggedIn) {
+    config.headers['Authorization'] = 'Bearer ' + user.token;
+  }
+  return config;
+});
 
 export const registerUser = (username, password) => dispatch => {
   dispatch({ type: USER_REGISTER_PENDING, });
