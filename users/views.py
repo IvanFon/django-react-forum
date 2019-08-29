@@ -10,7 +10,7 @@ from .models import User
 
 class RegisterView(APIView):
     # Only allow unauthenticated users
-    permission_classes = [ ~IsAuthenticated ]
+    permission_classes = [~IsAuthenticated]
 
     # Create a user
     def post(self, req):
@@ -39,4 +39,4 @@ class RegisterView(APIView):
 
         user = User.objects.create_user(username, None, password)
         user.save()
-        return Response(None, status=status.HTTP_201_CREATED)
+        return Response({}, status=status.HTTP_201_CREATED)
