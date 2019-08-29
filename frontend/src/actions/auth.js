@@ -1,14 +1,14 @@
 import {
-  USER_LOGGED_IN,
-  USER_LOGIN_ERROR,
-  USER_LOGIN_START,
-  USER_REGISTERED,
-  USER_REGISTER_ERROR,
-  USER_REGISTER_START,
+  USER_LOGIN_FAIL,
+  USER_LOGIN_PENDING,
+  USER_LOGIN_SUCCESS,
+  USER_REGISTER_FAIL,
+  USER_REGISTER_PENDING,
+  USER_REGISTER_SUCCESS,
 } from '../constants/actionTypes';
 
 export const registerUser = (username, password) => dispatch => {
-  dispatch({ type: USER_REGISTER_START, });
+  dispatch({ type: USER_REGISTER_PENDING, });
 
   return fetch('/api/users/register/', {
     method: 'POST',
@@ -28,11 +28,11 @@ export const registerUser = (username, password) => dispatch => {
     .then(data => {
       if (data.status === 201) {
         dispatch({
-          type: USER_REGISTERED,
+          type: USER_REGISTER_SUCCESS,
         });
       } else {
         dispatch({
-          type: USER_REGISTER_ERROR,
+          type: USER_REGISTER_FAIL,
           payload: data.body,
         });
       }
@@ -40,7 +40,7 @@ export const registerUser = (username, password) => dispatch => {
 };
 
 export const loginUser = (username, password) => dispatch => {
-  dispatch({ type: USER_LOGIN_START, });
+  dispatch({ type: USER_LOGIN_PENDING, });
 
   return fetch('/api/users/token/', {
     method: 'POST',
@@ -60,7 +60,7 @@ export const loginUser = (username, password) => dispatch => {
     .then(data => {
       if (data.status === 200) {
         dispatch({
-          type: USER_LOGGED_IN,
+          type: USER_LOGIN_SUCCESS,
           payload: {
             username,
             token: data.body.token,
@@ -68,7 +68,7 @@ export const loginUser = (username, password) => dispatch => {
         });
       } else {
         dispatch({
-          type: USER_LOGIN_ERROR,
+          type: USER_LOGIN_FAIL,
           payload: data.body,
         });
       }

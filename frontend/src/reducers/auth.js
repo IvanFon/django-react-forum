@@ -1,10 +1,10 @@
 import {
-  USER_LOGGED_IN,
-  USER_LOGIN_ERROR,
-  USER_LOGIN_START,
-  USER_REGISTERED,
-  USER_REGISTER_ERROR,
-  USER_REGISTER_START,
+  USER_LOGIN_FAIL,
+  USER_LOGIN_PENDING,
+  USER_LOGIN_SUCCESS,
+  USER_REGISTER_FAIL,
+  USER_REGISTER_PENDING,
+  USER_REGISTER_SUCCESS,
 } from '../constants/actionTypes';
 
 const initRegisterState = {
@@ -15,21 +15,21 @@ const initRegisterState = {
 
 export const register = (state = initRegisterState, action) => {
   switch (action.type) {
-    case USER_REGISTER_START:
+    case USER_REGISTER_PENDING:
       return {
         loading: true,
         success: false,
         errors: null,
       };
 
-    case USER_REGISTERED:
+    case USER_REGISTER_SUCCESS:
       return {
         loading: false,
         success: true,
         errors: null,
       };
 
-    case USER_REGISTER_ERROR:
+    case USER_REGISTER_FAIL:
       return {
         loading: false,
         success: false,
@@ -49,21 +49,21 @@ const initLoginState = {
 
 export const login = (state = initLoginState, action) => {
   switch (action.type) {
-    case USER_LOGIN_START:
+    case USER_LOGIN_PENDING:
       return {
         loading: true,
         success: false,
         errors: null,
       };
 
-    case USER_LOGGED_IN:
+    case USER_LOGIN_SUCCESS:
       return {
         loading: false,
         success: true,
         errors: null,
       };
 
-    case USER_LOGIN_ERROR:
+    case USER_LOGIN_FAIL:
       return {
         loading: false,
         success: false,
@@ -83,7 +83,7 @@ const initUserState = {
 
 export const user = (state = initUserState, action) => {
   switch (action.type) {
-    case USER_LOGGED_IN:
+    case USER_LOGIN_SUCCESS:
       return {
         loggedIn: true,
         ...action.payload,
