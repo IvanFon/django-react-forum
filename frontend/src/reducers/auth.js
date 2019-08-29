@@ -2,6 +2,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_PENDING,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
   USER_REGISTER_FAIL,
   USER_REGISTER_PENDING,
   USER_REGISTER_SUCCESS,
@@ -88,6 +89,9 @@ export const user = (state = initUserState, action) => {
         loggedIn: true,
         ...action.payload,
       };
+
+    case USER_LOGOUT:
+      return initUserState;
 
     default:
       return state;

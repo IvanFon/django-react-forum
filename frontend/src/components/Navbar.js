@@ -50,6 +50,17 @@ class Navbar extends React.Component {
                 </NavLink>
               </li>
             }
+
+            {/* Only show logout when authenticated */}
+            {this.props.loggedIn &&
+              <li className="nav-item">
+                <NavLink className="nav-link"
+                         activeClassName="active"
+                         to='/logout'>
+                  Logout
+                </NavLink>
+              </li>
+            }
           </ul>
         </div>
       </nav>

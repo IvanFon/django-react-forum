@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Board from './components/Board';
 import Boards from './components/Boards';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
 import Post from './components/Post';
@@ -18,10 +19,11 @@ class App extends Component {
           <Switch>
             <Redirect exact path='/' to='/boards' />
             <Route exact path='/boards' component={Boards} />
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
             <Route path='/boards/:id' component={Board} />
+            <Route path='/login' component={Login} />
+            <Route path='/logout' component={Logout} />
             <Route path='/post/:id' component={Post} />
+            <Route path='/register' component={Register} />
             <Route component={NotFound} />
           </Switch>
         </main>

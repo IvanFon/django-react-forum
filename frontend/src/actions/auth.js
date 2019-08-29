@@ -4,6 +4,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_PENDING,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
   USER_REGISTER_FAIL,
   USER_REGISTER_PENDING,
   USER_REGISTER_SUCCESS,
@@ -71,4 +72,8 @@ export const loginUser = (username, password) => dispatch => {
       payload: err.response.data,
     });
   });
-}
+};
+
+export const logoutUser = () => dispatch => {
+  dispatch({ type: USER_LOGOUT });
+};
