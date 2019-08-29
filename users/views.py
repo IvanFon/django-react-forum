@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -8,6 +9,9 @@ from .models import User
 
 
 class RegisterView(APIView):
+    # Only allow unauthenticated users
+    permission_classes = [ ~IsAuthenticated ]
+
     # Create a user
     def post(self, req):
         username = req.data.get('username', '')
