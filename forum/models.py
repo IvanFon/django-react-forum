@@ -29,9 +29,10 @@ class Post(models.Model):
 class Comment(models.Model):
     """A comment made on a post."""
 
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
         if len(self.text) > 50:

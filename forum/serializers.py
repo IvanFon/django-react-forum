@@ -28,6 +28,9 @@ class PostListSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    # Get author username
+    author = serializers.CharField(source='author.username')
+
     class Meta:
         model = Comment
-        fields = ('id', 'post', 'text', 'date_added', )
+        fields = ('id', 'author', 'post', 'text', 'date_added', )

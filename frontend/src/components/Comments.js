@@ -24,7 +24,7 @@ class Comments extends React.Component {
           {this.props.comments.map(comment => (
             <div className="list-group-item"
                  key={comment.id}>
-              <h5 className="mb-1">Author</h5>
+              <h5 className="mb-1"><i>{comment.author}</i> says:</h5>
               <p>{comment.text}</p>
               <small>
                 {new Date(comment.date_added).toLocaleString(undefined, {
