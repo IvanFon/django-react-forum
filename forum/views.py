@@ -6,8 +6,9 @@ from .models import Board, Comment, Post
 from .serializers import (
     BoardSerializer,
     CommentSerializer,
+    PostCreateSerializer,
+    PostListSerializer,
     PostSerializer,
-    PostListSerializer
 )
 
 
@@ -33,7 +34,9 @@ class PostView(APIView):
 
     # Create a post
     def post(self, req):
-        serializer = PostSerializer(data=req.data)
+        data = req.data
+        data['author'] = req.user.id
+        serializer = PostCreateSerializer(data=req.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

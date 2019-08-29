@@ -6,6 +6,7 @@ import Boards from './components/Boards';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Navbar from './components/Navbar';
+import NewPost from './components/NewPost';
 import NotFound from './components/NotFound';
 import Post from './components/Post';
 import Register from './components/Register';
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path='/boards/:id' component={Board} />
             <Route path='/login' component={Login} />
             <Route path='/logout' component={Logout} />
+            <Route path='/post/new' component={NewPost} />
             <Route path='/post/:id' component={Post} />
             <Route path='/register' component={Register} />
             <Route component={NotFound} />

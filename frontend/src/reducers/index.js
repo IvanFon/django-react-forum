@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { board, boards } from './boards';
-import { comments, post } from './posts';
+import { comments, newPost, post } from './posts';
 import { login, register, user } from './auth';
 
 export default combineReducers({
@@ -9,6 +9,7 @@ export default combineReducers({
   boards,
   comments,
   login,
+  newPost,
   post,
   register,
   user,

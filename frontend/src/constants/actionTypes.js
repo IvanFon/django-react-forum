@@ -1,5 +1,9 @@
 export const BOARDS_LOADED = 'BOARDS_LOADED';
 export const COMMENTS_LOADED = 'COMMENTS_LOADED';
+export const NEW_POST_CLEAR = 'NEW_POST_CLEAR';
+export const NEW_POST_FAIL = 'NEW_POST_FAIL';
+export const NEW_POST_PENDING = 'NEW_POST_PENDING';
+export const NEW_POST_SUCCESS = 'NEW_POST_SUCCESS';
 export const POSTS_LOADED = 'POSTS_LOADED';
 export const POST_LOADED = 'POST_LOADED';
 export const SET_BOARD_NAME = 'SET_BOARD_NAME';

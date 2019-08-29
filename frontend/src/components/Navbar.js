@@ -30,6 +30,17 @@ class Navbar extends React.Component {
                   Boards
                 </NavLink>
             </li>
+
+            {/* Authenticated user nav items */}
+            {this.props.loggedIn &&
+              <li className="nav-item">
+                <NavLink className="nav-link"
+                      activeClassName="active"
+                      to='/post/new'>
+                    New Post
+                  </NavLink>
+              </li>
+            }
           </ul>
 
           {/* Non-authenticated user nav. */}

@@ -18,6 +18,12 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'author', 'board', 'title', 'text', 'date_added', )
 
 
+class PostCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('id', 'author', 'board', 'title', 'text', 'date_added')
+
+
 class PostListSerializer(serializers.ModelSerializer):
     # Get author username
     author = serializers.CharField(source='author.username')
