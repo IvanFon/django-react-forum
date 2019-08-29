@@ -1,5 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => ({
+  loggedIn: state.user.loggedIn,
+  username: state.user.username,
+});
 
 class Navbar extends React.Component {
   render() {
@@ -25,21 +31,25 @@ class Navbar extends React.Component {
                 </NavLink>
             </li>
 
-            <li className="nav-item">
-              <NavLink className="nav-link"
-                       activeClassName="active"
-                       to='/register'>
-                Register
-              </NavLink>
-            </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link"
-                       activeClassName="active"
-                       to='/login'>
-                Login
-              </NavLink>
-            </li>
+            {/* Only show login/register when not authenticated */}
+            {!this.props.loggedIn &&
+              <li className="nav-item">
+                <NavLink className="nav-link"
+                         activeClassName="active"
+                         to='/register'>
+                  Register
+                </NavLink>
+              </li>
+            }
+            {!this.props.loggedIn &&
+              <li className="nav-item">
+                <NavLink className="nav-link"
+                         activeClassName="active"
+                         to='/login'>
+                  Login
+                </NavLink>
+              </li>
+            }
           </ul>
         </div>
       </nav>
@@ -47,4 +57,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);
