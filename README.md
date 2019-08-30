@@ -34,3 +34,20 @@ This app allows users to register, login, create posts, and leave comments in th
 - Written in Javascript/ES6 with React
 - Redux for managing app state
 - Redux Thunk and Axios for interacting with REST API
+
+## Usage
+
+django-react-forum depends on Python 3 and Node.js.
+
+1. Clone the repo: `git clone https://github.com/IvanFon/django-react-forum.git`
+2. `cd django-react-forum`
+3. Create virtualenv: `python3 -m venv ./env`
+4. `source env/bin/activate`
+5. Setup database: `python manage.py migrate`
+6. Install backend dependencies: `pip install -r requirements.txt`
+7. `cd frontend`
+8. Install frontend dependencies: `yarn -D` or `npm install`
+9. Start frontend development server: `yarn start` or `npm run start`
+10. `cd ../`
+11. Start backend server: `python manage.py runserver`
+12. Open your web browser and navigate to `localhost:8000`!
