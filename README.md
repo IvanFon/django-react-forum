@@ -1,4 +1,4 @@
-# django-react-forum
+# django-react-forum [![Build Status](https://travis-ci.org/IvanFon/django-react-forum.svg?branch=master)](https://travis-ci.org/IvanFon/django-react-forum)
 
 ### [Try a live demo of the app here!](http://3.13.202.170)
 
