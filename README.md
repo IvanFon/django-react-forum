@@ -25,6 +25,7 @@ This app allows users to register, login, create posts, and leave comments in th
 ### Backend
 
 - Written in Python 3 with Django
+- Automatically tested with Travis CI
 - REST API made with Django REST Framework
 - Django REST Framework Simple JWT for authentication over REST API
 - Django Webpack Loader to serve React client during development
