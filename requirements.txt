@@ -1,4 +1,4 @@
-Django==2.2.4
+Django==2.2.8
 django-webpack-loader==0.6.0
 djangorestframework==3.10.2
 djangorestframework-simplejwt==4.3.0
